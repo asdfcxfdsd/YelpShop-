@@ -1,0 +1,52 @@
+<% layout('layouts/boilerplate')%>
+<!-- Cluster Map -->
+<!-- <div id="cluster-map"></div> -->
+
+<!-- Jumbotron -->
+<div
+  class="bg-image p-5 text-center shadow-1-strong rounded mb-5 text-dark"
+  style="background-image: url('https://images.unsplash.com/photo-1560463230-1d6803589edf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80'); background-size: cover; background-position: center; height: 40vh;"
+>
+  <h1 class="mb-3 h2">Welcome to YelpShop. </h1>
+  <p>
+    Coffeeshops From All Over Taiwan.  
+  </p>
+</div>
+
+
+<!-- Showcase  -->
+<div class="container">
+    <div class="row">
+      <% for (let coffeeshop of coffeeshops) {%>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card">
+          <% if (coffeeshop.images.length) { %> 
+          <img src="<%=coffeeshop.images[0].url%>" 
+          <% } %> 
+          class="card-img-top" />
+          <div class="card-body">
+            <h5 class="card-title"><%= coffeeshop.title%></h5>
+            
+            <p class="card-text"><%= coffeeshop.description%></p>
+            <a href="/coffeeshops/<%= coffeeshop.id%>" class="btn btn-primary"
+              >See Details</a>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  const mapToken = '<%-process.env.MAPBOX_TOKEN%>'  
+
+  const coffeeshops = { 
+    features: <%-JSON.stringify(coffeeshops)%>};
+</script>
+
+
+ <!-- For Cluster Map  -->
+ <script src="/javascript/clusterMap.js"></script>

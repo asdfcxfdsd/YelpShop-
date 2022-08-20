@@ -1,0 +1,69 @@
+<% layout('layouts/boilerplate')%> 
+
+<div class="row">
+    <h1 class="text-center">Edit Coffeeshop</h1>
+    <div class="col-6 offset-3">
+        <form action="/coffeeshops/<%= coffeeshop._id%>?_method=PUT" method="post" novalidate class="validated-form" enctype="multipart/form-data"> 
+            <div class="mb-3"> 
+                <label for="title" class="form-label">Title</label>
+                <input class="form-control" placeholder="Enter Name" type="text" id="title" name="coffeeshop[title]" value="<%= coffeeshop.title %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                  </div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input class="form-control" placeholder="Enter Location" type="text" id="location" name="coffeeshop[location]" value="<%= coffeeshop.location %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                  </div>
+            </div>
+
+            
+            <div class="mb-3 custom-file">
+                <label for="image" class="form-label custom-file-label">Add More Images</label>
+                <input class="form-control custom-file-input" type="file" id="image" name="image" multiple>
+          </div>
+  
+
+
+            <div class="mb-3">
+                <label class="form-label" for="price">Price</label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="text" class="form-control"  placeholder="Enter Price" name="coffeeshop[price]" id="price" value="<%= coffeeshop.price %>" required>
+                  </div>
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" placeholder="Enter Description" type="text" id="description" name="coffeeshop[description]" required><%= coffeeshop.description %></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                  </div>
+            </div>
+
+            <div class="mb-3">
+                <% coffeeshop.images.forEach(function(img, i) {  %>
+                    <!-- We have defined our thiumbail of virtual method on coffeeshop model -->
+                <img src="<%=img.thumbnail %>" class="img-thumbnail" alt="">
+                <div class="form-check-inline">
+                    <input type="checkbox" id="image-<%=i%>" name="deleteImages[]" value="<%=img.filename%>">
+                </div>
+                <label for="image-<%=i%>">Delete?</label>
+                <% })%>
+            </div>
+            
+
+            <div class="mb-3">
+                <button class="btn btn-success">Update Coffeeshop</button>
+            </div>
+            </form>
+            <a href="/coffeeshops">Back to All Coffeeshops</a>
+    </div>
+</div>
+
