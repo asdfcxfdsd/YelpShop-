@@ -1,19 +1,29 @@
-const mongoose = require("mongoose");
-const cities = require("./cities");
-const { places, descriptors } = require("./seedHelpers");
+const mongoose = require('mongoose');
+const cities = require('./cities');
+const { places, descriptors } = require('./seedHelpers');
 const Coffeeshop = require("../models/coffeeshop");
-const { application } = require("express");
-const { get } = require("express/lib/response");
-const { name } = require("ejs");
-const coffeeshops = require("./coffeeshops");
-const axios = require("axios").default;
+ 
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+ 
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/coffee-shop';
 
 main().catch((err) => console.log(err));
 async function main() {
-  await mongoose.connect("mongodb://localhost:27017/coffee-shop").then(() => {
+  await mongoose.connect(dbUrl).then(() => {
     console.log("Data connected");
   });
 }
+
+
+
+
+const coffeeshops = require("./coffeeshops");
+const axios = require("axios").default;
+
+
+
 
 const sample = (array) => array[Math.floor(Math.random() * array.length)];
 
