@@ -40,20 +40,19 @@ module.exports.createNewCoffeeshop = async (req, res) => {
 };
 
 module.exports.renderShowPage = async (req, res) => {
-  // const {id} = req.params;
-  const coffeeshop = await Coffeeshop.findById(req.params.id)
-    .populate({
+  const {id} = req.params;
+  const coffeeshop = await Coffeeshop.findById(id).populate({
       path: "reviews",
       populate: {
         path: "author",
-      },
-    })
-    .populate("author");
+      }
+    }).populate("author");
 
   if (!coffeeshop) {
     req.flash("error", "Can not find the coffeeshop!!!");
     return res.redirect(`/coffeeshops`);
   }
+  console.log(coffeeshop.author)
   res.render("coffeeshops/show", { coffeeshop });
 };
 

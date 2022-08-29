@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
-const cities = require('./cities');
-const { places, descriptors } = require('./seedHelpers');
 const Coffeeshop = require("../models/coffeeshop");
- 
+const axios = require("axios").default;
+
+
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
- 
+
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/coffee-shop';
 
 main().catch((err) => console.log(err));
@@ -16,12 +16,8 @@ async function main() {
   });
 }
 
-
-
-
-const coffeeshops = require("./coffeeshops");
-const axios = require("axios").default;
-
+// console.log(process.env.DB_URL) 
+// console.log(dbUrl)
 
 
 
@@ -36,7 +32,7 @@ const seedDB = async () => {
       return res;
     });
 
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 10; i++) {
     const random100 = Math.floor(Math.random() * 100);
     const price = Math.floor(Math.random() * 20) + 10;
 
@@ -62,14 +58,15 @@ const seedDB = async () => {
         }
       ],
       price: price,
-      author: "62d6e3c6deb6189051140923",
+      author: "630c48d5469778e7cb912bfa",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam dolores vero perferendis laudantium, consequuntur voluptatibus nulla architecto, sit soluta esse iure sed labore ipsam a cum nihil atque molestiae deserunt!"
     });
     await coffeeshop.save();
   }
-
+  
 };
+
 
 seedDB().then(() => {
   mongoose.connection.close();

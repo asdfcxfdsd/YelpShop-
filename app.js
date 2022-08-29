@@ -41,12 +41,11 @@ const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 
 
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/coffee-shop';
+const dbUrl =  process.env.DB_URL ||'mongodb://localhost:27017/coffee-shop';
 
 
 const mongoose = require('mongoose');
 main().catch(err => console.log(err));
-
 async function main() {
   await mongoose.connect(dbUrl);
 }
