@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Review = require('./review'); 
-
 // By default, Mongoose does not include virtuals when you convert a document to JSON. For example, if you pass a document to Express' res.json() function, virtuals will not be included by default. To include virtuals in res.json(), you need to set the toJSON schema option to { virtuals: true }.
 const opts = { toJSON: { virtuals: true } };
 

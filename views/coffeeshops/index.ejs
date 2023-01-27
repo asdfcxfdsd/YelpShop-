@@ -19,14 +19,13 @@
     <div class="row">
       <% for (let coffeeshop of coffeeshops) {%>
       <div class="col-12 col-md-6 col-lg-4">
-        <div class="card">
+        <div class="card"> 
           <% if (coffeeshop.images.length) { %> 
           <img src="<%=coffeeshop.images[0].url%>" 
           <% } %> 
-          class="card-img-top" />
+          class="card-img-top">
           <div class="card-body">
             <h5 class="card-title"><%= coffeeshop.title%></h5>
-            
             <p class="card-text"><%= coffeeshop.description%></p>
             <a href="/coffeeshops/<%= coffeeshop.id%>" class="btn btn-primary"
               >See Details</a>
@@ -46,6 +45,7 @@
   const coffeeshops = { 
     features: <%-JSON.stringify(coffeeshops)%>};
 </script>
+
 
 
  <!-- For Cluster Map  -->

@@ -54,7 +54,6 @@ async function main() {
 
 // Use ejs mate, which we could render our template by express. 
 const ejsMate = require('ejs-mate');
-const { response, urlencoded } = require('express');
 // use ejs-locals for all ejs templates:
 app.engine('ejs', ejsMate);
 
@@ -122,7 +121,7 @@ app.use(methodOverride('_method'))
 // Parse req.body 
 app.use(express.urlencoded({extended: true}))
 
-// So We Can Use Public Folder. 
+// So We Can Use Public Folder.  You're defining a middleware whose only purpose is to serve static files like JS/CSS.
 app.use(express.static(path.join(__dirname, 'public')));
 
 const store = new MongoStore({
@@ -199,7 +198,9 @@ app.get('/', async(req, res) => {
 })
 
 
-
+app.get('/shoppingcart', async(req, res) => {
+    res.render('shoppingCart');
+})
 
 
 

@@ -58,7 +58,7 @@ const seedDB = async () => {
         }
       ],
       price: price,
-      author: "630c48d5469778e7cb912bfa",
+      author: "62b9cca4bb92570016cf5ecc",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam dolores vero perferendis laudantium, consequuntur voluptatibus nulla architecto, sit soluta esse iure sed labore ipsam a cum nihil atque molestiae deserunt!"
     });
