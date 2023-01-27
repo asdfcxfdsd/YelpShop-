@@ -14,6 +14,22 @@
 •	使用者可以刪除自己的評論。  
 
 使用技術:  
-<img width="468" alt="image" src="https://user-images.githubusercontent.com/64323574/215125258-c8e88f20-7f57-41a3-8a2f-133166182940.png">  
-後面由於Heroku變成要付費，所以改到render進行deploy  
+在網站前端部分  
+使用基礎html+css+boostrap進行主要網頁畫面，其中也學到如何使用ejs，讓我可以使用layout, partial template functions 來構建版面。
+
+在後端方面  
+使用nodejs+express寫出基本CRUD來進行基本創建更新刪除咖啡廳等操作  
+使用MongoDB做為資料庫，且學會如何基本設計資料庫的關係寫schema。且當前端傳送資料進來時使用 joi 來做資料正規化的驗證。  
+在利用passport (local-strategy):一個使用者登入跟認證系統實作使user可以註冊、登入、登出，不用登入可以瀏覽全部及單個咖啡店資訊 ，  
+使用Mapbox來實現，首頁可以看到所有咖啡店的地圖和位置。單個咖啡店頁面可以看到咖啡店地圖使用者可以刪除或編輯自己所建立之咖啡店，使用者可以刪除自己的評論。    
+也自學到如何使用github去管理自己的code，最後也學習到如何把作品部署到Heroku(後面由於Heroku變成要付費，所以改到render進行deploy
+)。  
 部署網址：https://yelpshop.onrender.com/  
+<img width="468" alt="image" src="https://user-images.githubusercontent.com/64323574/215125258-c8e88f20-7f57-41a3-8a2f-133166182940.png">  
+
+
+
+
+
+
+
